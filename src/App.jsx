@@ -1,19 +1,18 @@
 
 import React from 'react'
 
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import './App.css'
-import { Layout } from './components/Layout'
-import { Home } from './pages/Home'
-import { Articles } from './pages/Articles'
-import { About } from './pages/About'
+import { Routes, Route } from 'react-router-dom'
+// import './App.css'
+import  Layout  from './components/Layout'
+import Home  from './pages/Home'
+import  Articles  from './pages/Articles'
+import  About  from './pages/About'
 
 function App() {
 
 
   return (
     <>
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />} >
             <Route index element={<Home />} />
@@ -21,7 +20,6 @@ function App() {
             <Route path="about" element={<About />} />
           </Route>
         </Routes>
-      </BrowserRouter>
     </>
   )
 }

@@ -2,24 +2,37 @@ import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
 
+import { StaticRouter } from "react-router-dom/server";
+import App  from "./src/App";
+import path from "path";
+import fs from "fs";
 const app = express();
 
 const PORT = 8080;
 
+app.use(express.static("./build", { index: false }));
 
-app.get('/*', (_, res) => {
+app.get('/*', (req, res) => {
   const reactApp = renderToString(
-    <h1>Hello from the server side!</h1>
+    <StaticRouter location={req.url}>
+      <App />
+    </StaticRouter>
   );
 
-  res.send(`
-    <html>
-      <body>
-        <div id="root">
-          ${reactApp}
-        </div>
-    </html>
-  `)
+  const templateFile = path.resolve("./build/index.html")
+  fs.readFile(templateFile, "utf8", (err, data) => {
+    if (err) {
+      res.status(500).send("Something went wrong!");
+      return;
+    }
+  
+    return res.send(
+      data.replace(
+        '<div id="root"></div>',
+        `<div id="root">${reactApp}</div>`
+      )
+    );
+  });
 });
 
 app.listen(PORT, () => {
