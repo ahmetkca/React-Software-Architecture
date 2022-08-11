@@ -1,5 +1,6 @@
 import express from "express";
 import React from "react";
+import { ServerStyleSheet } from "styled-components";
 import { renderToString } from "react-dom/server";
 
 import { StaticRouter } from "react-router-dom/server";
@@ -13,10 +14,15 @@ const PORT = 8080;
 app.use(express.static("./build", { index: false }));
 
 app.get('/*', (req, res) => {
+
+  const sheet = new ServerStyleSheet();
+
   const reactApp = renderToString(
-    <StaticRouter location={req.url}>
-      <App />
-    </StaticRouter>
+    sheet.collectStyles(
+      <StaticRouter location={req.url}>
+        <App />
+      </StaticRouter>
+    )
   );
 
   const templateFile = path.resolve("./build/index.html")
@@ -30,7 +36,7 @@ app.get('/*', (req, res) => {
       data.replace(
         '<div id="root"></div>',
         `<div id="root">${reactApp}</div>`
-      )
+      ).replace('{{ styles }}', sheet.getStyleTags())
     );
   });
 });
