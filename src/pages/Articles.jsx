@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useDataSSR } from "../hooks/useDataSSR";
 
 export const Articles = () => {
-    const [articles, setArticles] = useState(window && window.preloadedArticles);
 
-    useEffect(() => {
-        if (window && !window.preloadedArticles) {
-            console.log("No preloaded articles\nFetching articles...");
-            (async () => {
-                const response = await fetch("/api/articles");
-                const data = await response.json();
-                setArticles(data);
-            } )();
-        }
-    } , []); // empty array as second argument to useEffect means it will only run once (like componentDidMount in class components)
+
+    const articles = useDataSSR("articles", async () => {
+        const response = await fetch("http://localhost:8080/api/articles");
+        return await response.json();
+    })
 
 
     return (
         <div style={{ backgroundColor: 'green', color: 'white' }}>
             <h1>Articles:</h1>
             {articles ? articles.map(article => (
-                <>
-                    <div style={{ border: '1px' }} key={article.id}>
+                <div key={article.id}>
+                    <div style={{ border: '1px', margin: '2px', padding: '2px'}} >
                         <h3>{article.title}</h3>
                         <p>{article.body}</p>
                         <p>written by {article.author}</p>
                     </div>
                     <hr/>
-                </>
+                </div>
             )) : <p>Articles Loading...</p>}
 
         </div>

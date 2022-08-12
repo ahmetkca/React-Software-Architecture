@@ -5,13 +5,16 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import { InitialDataContext } from './InitialDataContext';
 
 const container = document.getElementById('root')
 const root = hydrateRoot(container, 
 <React.StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <InitialDataContext.Provider value={(window && window.preloadedData) || { _isServer: false, _requests: [], _data: {} }}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </InitialDataContext.Provider>
 </React.StrictMode>);
 
 
