@@ -12,3 +12,4 @@
 - Renders app to HTML on the server.
 - Runs JavaScript bundle, loads data, creates HTML document, sends to client-side
 - Faster UX and better for SEO, but more strain on server.
+
