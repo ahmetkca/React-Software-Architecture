@@ -13,5 +13,6 @@
 ## [Code Splitting](https://github.com/ahmetkca/React-Software-Architecture/tree/code-splitting)
 > Many JavaScript frameworks bundle all dependencies into one large file and React is not an exception. In theory it should speed up page loads and lower the amount of traffic that page needs to handle. At certian point, however a bundle grows to a certian size at which the overhead of interpreting and executing the code slows page load down. ***Code Splitting*** is the splitting of code  into various bundles or components which can then be loaded **on demand** or **in parallel**.
 
-## [Folder Structure](https://github.com/ahmetkca/React-Software-Architecture/tree/folder-structure)
+## [Folder Structure](https://github.com/ahmetkca/React-Software-Architecture/tree/folder-structure-and-naming-conventions)
 > Monoliths, Multi-repos and Monorepos
+> Functions vs Feature-based organization
