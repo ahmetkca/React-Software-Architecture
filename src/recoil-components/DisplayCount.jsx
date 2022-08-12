@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 
-import { counterState } from "../recoil-states";
+import { counterState } from "../recoil-atoms-selectors";
 
 export const DisplayCount = () => {
     const counter = useRecoilValue(counterState);
