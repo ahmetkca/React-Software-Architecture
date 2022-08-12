@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 export const Articles = () => {
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState(window && window.preloadedArticles);
 
     useEffect(() => {
-        (async () => {
-            const response = await fetch("/api/articles");
-            const data = await response.json();
-            setArticles(data);
-        } )();
+        if (window && !window.preloadedArticles) {
+            console.log("No preloaded articles\nFetching articles...");
+            (async () => {
+                const response = await fetch("/api/articles");
+                const data = await response.json();
+                setArticles(data);
+            } )();
+        }
     } , []); // empty array as second argument to useEffect means it will only run once (like componentDidMount in class components)
 
 

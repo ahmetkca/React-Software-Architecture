@@ -9,6 +9,8 @@ import path from "path";
 import fs from "fs";
 const app = express();
 
+global.window = {}; // this is needed for frontend Articles component to work without throwing window is undefined error
+
 const PORT = 8080;
 
 app.use(express.static("./build", { index: false }));
@@ -56,11 +58,14 @@ app.get('/*', (req, res) => {
       res.status(500).send("Something went wrong!");
       return;
     }
+
+    const loadedArticles = articles;
+
   
     return res.send(
       data.replace(
         '<div id="root"></div>',
-        `<div id="root">${reactApp}</div>`
+        `<script>window.preloadedArticles = ${JSON.stringify(loadedArticles)}</script><div id="root">${reactApp}</div>`
       ).replace('{{ styles }}', sheet.getStyleTags())
     );
   });
