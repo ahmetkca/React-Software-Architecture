@@ -13,6 +13,31 @@ const PORT = 8080;
 
 app.use(express.static("./build", { index: false }));
 
+const articles = [
+  {
+    id: 1,
+    title: "Article 1",
+    author: "Jack",
+    body: "This is the body of article 1"
+  },
+  {
+    id: 2,
+    title: "Article 2",
+    author: "Jill",
+    body: "This is the body of article 2"
+  },
+  {
+    id: 3,
+    title: "Article 3",
+    author: "John",
+    body: "This is the body of article 3"
+  }
+];
+
+app.get("/api/articles", (req, res) => {
+  res.json(articles);
+}); // get all articles
+
 app.get('/*', (req, res) => {
 
   const sheet = new ServerStyleSheet();
