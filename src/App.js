@@ -14,7 +14,7 @@ function App() {
     <>
       <h1>State Management Example</h1>
       <RecoilRoot>
-        <h2>Counter with Recoil</h2>
+        <h2>state management withh Recoil</h2>
         <CounterButtonWithRecoil />
         <CounterButtonWithRecoil />
         <DisplayCount />
