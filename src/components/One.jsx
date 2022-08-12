@@ -1,4 +1,5 @@
 const One = () => {
+    throw new Error("One is throwing an error");
     return (
         <div className="one">
         <h1>One</h1>
