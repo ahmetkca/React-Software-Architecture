@@ -5,3 +5,7 @@
 
 ## [State Management](https://github.com/ahmetkca/React-Software-Architecture/tree/state-management)
 > How an application **handles the data needs** of its components, with regards to **loading, storing, persisting, and sharing this data**.
+
+
+## [Data Loading and WebSockets](https://github.com/ahmetkca/React-Software-Architecture/tree/data-loading-and-websockets)
+> Data loading with Server-Side Rendering (SSR)
