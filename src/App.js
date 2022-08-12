@@ -13,11 +13,19 @@ import { Provider } from 'react-redux';
 import { reduxStore } from './redux-files/store';
 import { CounterButtonWithRedux } from './redux-files/CounterButtonWithRedux';
 
+import { Counter } from './mobx-files/Counter';
+import { CounterButtonWithMobX } from './mobx-files/CounterButtonWithMobX';
+const counter = new Counter();
 
 function App() {
   return (
     <>
       <h1>State Management Example</h1>
+      <div>
+        <h2>State Management with <b>MobX</b></h2>
+        <CounterButtonWithMobX counter={counter} />
+      </div>
+      <hr/>
       <Provider store={reduxStore}>
         <h2>State Management with <b>Redux</b></h2>
         <CounterButtonWithRedux />
