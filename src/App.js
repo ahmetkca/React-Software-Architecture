@@ -2,12 +2,12 @@
 import './App.css';
 import CounterButton from './CounterButton';
 import CounterButtonWithContext from './CounterButtonWithContext';
-import CounterButtonWithRecoil from './CounterButtonWithRecoil';
-import CounterButtonWithRecoilSelector from './CounterButtonWithRecoilSelector';
+import CounterButtonWithRecoil from './recoil-components/CounterButtonWithRecoil';
+import CounterButtonWithRecoilSelector from './recoil-components/CounterButtonWithRecoilSelector';
 import { CounterProvider } from './CounterProvider';
 
 import { RecoilRoot } from 'recoil';
-import { DisplayCount } from './DisplayCount';
+import { DisplayCount } from './recoil-components/DisplayCount';
 
 function App() {
   return (

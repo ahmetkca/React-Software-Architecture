@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { counterState, incrementByState } from './recoil-states';
+import { counterState, incrementByState } from '../recoil-states';
 
 export const CounterButton = () => {
 
